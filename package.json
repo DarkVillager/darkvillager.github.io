@@ -1,0 +1,23 @@
+{
+  "name": "planning-project",
+  "version": "1.0.0",
+  "description": "Planning",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "nexe -r views/**/*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "planning"
+  ],
+  "author": "Dark_Ville",
+  "license": "ISC",
+  "dependencies": {
+    "apple-icloud": "^1.1.0",
+    "icloud": "^0.1.0",
+    "node-icloud-api": "^1.0.0",
+    "prompt": "^1.1.0",
+    "readline": "^1.3.0"
+  }
+}
