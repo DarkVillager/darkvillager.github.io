@@ -5,7 +5,7 @@ const port = 3000;
 
 app.get('/', function (req, res) {
 	const options = {
-		root: __dirname,
+		root: `${__dirname}/dist/`,
 	};
 	res.sendFile('index.html', options);
 	res.end(transform);
