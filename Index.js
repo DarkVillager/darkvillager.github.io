@@ -1,14 +1,11 @@
-const path = require('path');
+const fs = require('@cyclic.sh/s3fs')(process.env.CYCLIC_BUCKET_NAME);
 const express = require('express');
 const app = express();
 const port = 3000;
 
 app.get('/', function (req, res) {
-	const options = {
-		root: `${__dirname}/dist/`,
-	};
-	res.sendFile('index.html', options);
-	res.end(transform);
+	res.sendFile(fs.readFileSync('index.html').toString());
+	res.end();
 });
 
 app.listen(port, () => {
