@@ -1,24 +1,18 @@
-const fs = require('@cyclic.sh/s3fs')(process.env.CYCLIC_BUCKET_NAME);
-const Path = require('path');
-const express = require('express');
-const app = express();
-const port = 80;
-
-function ThroughDirectory(Directory) {
-	fs.readdirSync(Directory).forEach((File) => {
-		const Absolute = Path.join(Directory, File);
-		if (FS.statSync(Absolute).isDirectory()) return ThroughDirectory(Absolute);
-		else return Files.push(Absolute);
+async function SumbitData() {
+	let it = 0;
+	var all = [];
+	let area = document.getElementById('in1');
+	var lines = area.value
+		.replace(/\r\n/g, '\n')
+		.split('\n')
+		.filter((line) => line);
+	lines.forEach((element) => {
+		element = element.replace(/!\[.*]\(/gm, '<img src="');
+		element = element.replace(/\)/gm, '">');
+		all.push(element);
 	});
+	area.value = all.toString().replace(',', '\n');
+	await navigator.clipboard.writeText(area.value);
+
+	area.value = area.value.replace(/,/gm, '');
 }
-
-ThroughDirectory('./');
-
-app.get('/', function (req, res) {
-	res.sendFile(fs.readFileSync('index.html').toString());
-	res.end();
-});
-
-app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`);
-});
